@@ -5,7 +5,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows.Input;
 using WPF_Project.Extensions;
+using WPF_Project.Messages;
 using WPF_Project.Model;
 using WPF_Project.Services;
 using WPF_Project.Utillity;
@@ -26,11 +28,20 @@ namespace WPF_Project.ViewModel
             Messenger.Default.Register<Task>(this, OnTaskReceived);
 
             LoadData();
+            LoadCommands();
         }
 
         private void LoadData()
         {
             Customers = _DataService.GetAllCustomers().ToObservableCollection();
+        }
+        private void OnTaskReceived(Task task)
+        {
+            SelectedTask = task;
+            if (task.Car != null)
+            {
+                selectedCustomer = task.Car.Customer;
+            }
         }
 
         ObservableCollection<Customer> customers;
@@ -55,17 +66,6 @@ namespace WPF_Project.ViewModel
             }
         }
 
-        private bool isCarsComboBoxEnabled;
-        public bool IsCarsComboBoxEnabled
-        {
-            get => isCarsComboBoxEnabled;
-            set
-            {
-                isCarsComboBoxEnabled = value;
-                OnPropertyChanged();
-            }
-        }
-
         private Task selectedTask;
         public Task SelectedTask
         {
@@ -77,11 +77,40 @@ namespace WPF_Project.ViewModel
             }
         }
 
-        private void OnTaskReceived(Task task)
+        #region COMMANDS
+        public ICommand SaveTaskCommand { get; set; }
+        public ICommand DeleteTaskCommand { get; set; }
+
+        private void LoadCommands()
         {
-            SelectedTask = task;
-            selectedCustomer = task.Car.Customer;
+            SaveTaskCommand = new CustomCommand(SaveTask, CanSaveTask);
+            DeleteTaskCommand = new CustomCommand(DeleteTask, CanDeleteTask);
         }
+
+        private void SaveTask(object task)
+        {
+            _DataService.UpdateTask(selectedTask);
+
+            Messenger.Default.Send<UpdateListMessage>(new UpdateListMessage("Task Saved!"));
+        }
+
+        private void DeleteTask(object task)
+        {
+            _DataService.DeleteTask(selectedTask);
+
+            Messenger.Default.Send<UpdateListMessage>(new UpdateListMessage("Task Deleted!"));
+        }
+
+        private bool CanSaveTask(object obj)
+        {
+            return true;
+        }
+
+        private bool CanDeleteTask(object obj)
+        {
+            return true;
+        }
+        #endregion
 
         #region PROPERTY CHANGED EVENT
         public event PropertyChangedEventHandler PropertyChanged;

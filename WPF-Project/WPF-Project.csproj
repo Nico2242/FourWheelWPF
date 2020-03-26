@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\NullToFalseConverter.cs" />
     <Compile Include="Converters\TaskStartEndConverter.cs" />
+    <Compile Include="Messages\UpdateListMessage.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\FourWheelDataService.cs" />
     <Compile Include="Services\IDialogService.cs" />
@@ -64,6 +65,9 @@
     <Compile Include="Utillity\Messenger.cs" />
     <Compile Include="ViewModel\TaskAdminViewModel.cs" />
     <Compile Include="ViewModel\TaskDetailsViewModel.cs" />
+    <Compile Include="View\MenuWindow.xaml.cs">
+      <DependentUpon>MenuWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TaskAdminWindow.xaml.cs">
       <DependentUpon>TaskAdminWindow.xaml</DependentUpon>
     </Compile>
@@ -86,6 +90,10 @@
       <DependentUpon>CustomerAdminWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\MenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TaskAdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

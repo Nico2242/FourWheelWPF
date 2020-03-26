@@ -20,7 +20,10 @@ namespace WPF_Project.Services
 
         public void CloseTaskDetailsDialog()
         {
-            throw new NotImplementedException();
+            if (taskDetailsWindow != null)
+            {
+                taskDetailsWindow.Close();
+            }
         }
 
         public void ShowTaskDetailsDialog()

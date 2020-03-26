@@ -7,5 +7,7 @@ namespace WPF_Project.Services
     {
         List<Customer> GetAllCustomers();
         List<Task> GetAllTasks();
+        void UpdateTask(Task task);
+        void DeleteTask(Task selectedTask);
     }
 }

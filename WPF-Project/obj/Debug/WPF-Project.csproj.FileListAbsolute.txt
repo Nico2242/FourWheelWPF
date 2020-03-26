@@ -23,3 +23,5 @@ C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project\bin\De
 C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project\bin\Debug\WPF-Project.DAL.pdb
 C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project\obj\Debug\View\TaskDetailsWindow.g.cs
 C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project\obj\Debug\View\TaskDetailsWindow.baml
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project\obj\Debug\View\MenuWindow.g.cs
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project\obj\Debug\View\MenuWindow.baml

@@ -25,5 +25,15 @@ namespace WPF_Project.Services
         {
             return repo.GetTasks();
         }
+
+        public void UpdateTask(Task task)
+        {
+            repo.UpdateTask(task);
+        }
+
+        public void DeleteTask(Task task)
+        {
+            repo.DeleteTask(task);
+        }
     }
 }

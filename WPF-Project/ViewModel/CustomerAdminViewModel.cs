@@ -95,36 +95,21 @@ namespace WPF_Project.ViewModel
         #endregion
 
         #region COMMANDS
+        public ICommand AddCustomerCommand { get; set; }
+        public ICommand AddCarCommand { get; set; }
+
         private void LoadCommands()
         {
             AddCustomerCommand = new CustomCommand(AddCustomer, CanAddCustomer);
             AddCarCommand = new CustomCommand(AddCar, CanAddCar);
         }
 
-        public ICommand AddCustomerCommand { get; set; }
         private void AddCustomer(object obj)
         {
             var values = (object[])obj;
             Customers.Add(new Customer { Id = Customers.Count + 1, Name = values[0].ToString(), Surname = values[1].ToString(), Mail = values[2].ToString() });
         }
 
-        private bool CanAddCustomer(object obj)
-        {
-            if (obj != null)
-            {
-                object[] values = (object[])obj;
-
-                if (values[0].ToString().Length > 0 && values[1].ToString().Length > 0 && values[2].ToString().Length > 0)
-                {
-                    return true;
-                }
-                return false;
-            }
-            return false;
-        }
-
-
-        public ICommand AddCarCommand { get; set; }
         private void AddCar(object obj)
         {
             var values = (object[])obj;
@@ -148,6 +133,21 @@ namespace WPF_Project.ViewModel
 
             customer.Cars.Add(new Car { Id = highestCarId++, Brand = (CarBrand)values[1], Model = values[2].ToString(), Plate = values[3].ToString() });
 
+        }
+
+        private bool CanAddCustomer(object obj)
+        {
+            if (obj != null)
+            {
+                object[] values = (object[])obj;
+
+                if (values[0].ToString().Length > 0 && values[1].ToString().Length > 0 && values[2].ToString().Length > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
 
         private bool CanAddCar(object obj)

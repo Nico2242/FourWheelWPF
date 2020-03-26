@@ -7,5 +7,7 @@ namespace WPF_Project.DAL
     {
         List<Customer> GetCustomers();
         List<Task> GetTasks();
+        void UpdateTask(Task task);
+        void DeleteTask(Task task);
     }
 }

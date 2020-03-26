@@ -115,5 +115,24 @@ namespace WPF_Project.DAL
                 }
             }
         }
+
+        public void DeleteTask(Task task)
+        {
+            tasks.Remove(task);
+        }
+
+        public void UpdateTask(Task task)
+        {
+            Task tasktoUpdate = tasks.Where(t => t.Id == task.Id).FirstOrDefault();
+
+            if (tasktoUpdate != null)
+            {
+                tasktoUpdate = task;
+            }
+            else
+            {
+                tasks.Add(task);
+            }
+        }
     }
 }

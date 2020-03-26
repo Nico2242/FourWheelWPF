@@ -1,0 +1,11 @@
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\bin\Debug\netstandard2.0\WPF-Project.DAL.deps.json
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\bin\Debug\netstandard2.0\WPF-Project.DAL.dll
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\bin\Debug\netstandard2.0\WPF-Project.DAL.pdb
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\bin\Debug\netstandard2.0\WPF-Project.Model.dll
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\bin\Debug\netstandard2.0\WPF-Project.Model.pdb
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\obj\Debug\netstandard2.0\WPF-Project.DAL.csprojAssemblyReference.cache
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\obj\Debug\netstandard2.0\WPF-Project.DAL.AssemblyInfoInputs.cache
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\obj\Debug\netstandard2.0\WPF-Project.DAL.AssemblyInfo.cs
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\obj\Debug\netstandard2.0\WPF-Project.DAL.csproj.CopyComplete
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\obj\Debug\netstandard2.0\WPF-Project.DAL.dll
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.DAL\obj\Debug\netstandard2.0\WPF-Project.DAL.pdb

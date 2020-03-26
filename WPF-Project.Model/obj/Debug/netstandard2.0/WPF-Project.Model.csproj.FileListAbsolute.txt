@@ -1,0 +1,8 @@
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.Model\bin\Debug\netstandard2.0\WPF-Project.Model.deps.json
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.Model\bin\Debug\netstandard2.0\WPF-Project.Model.dll
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.Model\bin\Debug\netstandard2.0\WPF-Project.Model.pdb
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.Model\obj\Debug\netstandard2.0\WPF-Project.Model.csprojAssemblyReference.cache
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.Model\obj\Debug\netstandard2.0\WPF-Project.Model.AssemblyInfoInputs.cache
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.Model\obj\Debug\netstandard2.0\WPF-Project.Model.AssemblyInfo.cs
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.Model\obj\Debug\netstandard2.0\WPF-Project.Model.dll
+C:\Users\nicol\source\Repos\nicolai-school\Prog 4\WPF-Project\WPF-Project.Model\obj\Debug\netstandard2.0\WPF-Project.Model.pdb

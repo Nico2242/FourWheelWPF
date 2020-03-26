@@ -55,10 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\NullToFalseConverter.cs" />
     <Compile Include="Converters\TaskStartEndConverter.cs" />
+    <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\FourWheelDataService.cs" />
+    <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\IFourWheelDataService.cs" />
-    <Compile Include="ViewModel\TaskAdminWindowViewModel.cs" />
+    <Compile Include="Utillity\Messenger.cs" />
+    <Compile Include="ViewModel\TaskAdminViewModel.cs" />
+    <Compile Include="ViewModel\TaskDetailsViewModel.cs" />
     <Compile Include="View\TaskAdminWindow.xaml.cs">
       <DependentUpon>TaskAdminWindow.xaml</DependentUpon>
     </Compile>
@@ -91,7 +96,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ViewModel\CustomerAdminWindowViewModel.cs" />
+    <Compile Include="ViewModel\CustomerAdminViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

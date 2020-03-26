@@ -11,14 +11,14 @@ using WPF_Project.Utillity;
 
 namespace WPF_Project.ViewModel
 {
-    public class CustomerAdminWindowViewModel : INotifyPropertyChanged
+    public class CustomerAdminViewModel : INotifyPropertyChanged
     {
         private IFourWheelDataService _DataService;
         private CollectionViewSource customerCollection;
 
-        public CustomerAdminWindowViewModel()
+        public CustomerAdminViewModel(IFourWheelDataService dataService, IDialogService dialogService)
         {
-            _DataService = new FourWheelDataService();
+            _DataService = dataService;
             LoadData();
             LoadCommands();
 

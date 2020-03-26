@@ -7,7 +7,7 @@
         xmlns:converters="clr-namespace:WPF_Project.Converters"
         mc:Ignorable="d"
         Title="TaskAdminWindow" Height="450" Width="800"
-        DataContext="{Binding Source={StaticResource viewModelLocator}, Path=TaskAdminWindowViewModel}">
+        DataContext="{Binding Source={StaticResource viewModelLocator}, Path=TaskAdminViewModel}">
 
     <Window.Resources>
         <converters:TaskStartEndConverter x:Key="taskStartEndConverter" />
@@ -19,8 +19,8 @@
             <ColumnDefinition  Width="4*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Margin="10">
-            <Button Content="Add Task" Margin="0,0,0,10" />
-            <Button Content="Edit Task" Margin="0,0,0,10"/>
+            <Button Content="Add Task" Margin="0,0,0,10" Command="{Binding AddTaskCommand}"/>
+            <Button Content="Edit Task" Margin="0,0,0,10" Command="{Binding EditTaskCommand}" CommandParameter="{Binding SelectedItem, ElementName=lvTasks}"/>
         </StackPanel>
         <ListView Margin="10" Name="lvTasks" Grid.Column="1" ItemsSource="{Binding Tasks}" SelectionMode="Single">
             <ListView.ItemContainerStyle>

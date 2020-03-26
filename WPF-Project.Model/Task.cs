@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -61,6 +62,7 @@ namespace WPF_Project.Model
         }
 
         public Car Car { get; set; }
+        public ObservableCollection<Sparepart> Spareparts { get; set; }
 
 
         #region PROPERTY CHANGED EVENT

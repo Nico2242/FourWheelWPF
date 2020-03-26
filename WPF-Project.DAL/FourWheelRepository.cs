@@ -35,9 +35,19 @@ namespace WPF_Project.DAL
                     Id = 1,
                     Description = "Service",
                     Status = false,
-                    Car = customers.FirstOrDefault(c => c.Id == 1).Cars.FirstOrDefault()
+                    Car = customers.FirstOrDefault(c => c.Id == 1).Cars.FirstOrDefault(),
+                    Spareparts = new ObservableCollection<Sparepart>
+                    {
+                        new Sparepart
+                        {
+                            Id = 1,
+                            Name = "Generator",
+                            Price = 200.22
+                        }
+                    }
                 },
             };
+
         }
 
         private void LoadCustomers()
@@ -96,6 +106,14 @@ namespace WPF_Project.DAL
                     }
                 },
             };
+
+            foreach (var customer in customers)
+            {
+                foreach (var car in customer.Cars)
+                {
+                    car.Customer = customer;
+                }
+            }
         }
     }
 }

@@ -9,7 +9,12 @@ namespace WPF_Project.Services
 {
     public class FourWheelDataService : IFourWheelDataService
     {
-        IFourWheelRepository repo = new FourWheelRepository();
+        IFourWheelRepository repo;
+
+        public FourWheelDataService(IFourWheelRepository repository)
+        {
+            this.repo = repository;
+        }
 
         public List<Customer> GetAllCustomers()
         {

@@ -10,7 +10,7 @@
         xmlns:model="clr-namespace:WPF_Project.Model;assembly=WPF-Project.Model"
         mc:Ignorable="d"
         Title="FourWheel" Height="450" Width="800"
-        DataContext="{Binding Source={StaticResource viewModelLocator}, Path=CustomerAdminWindowViewModel}">
+        DataContext="{Binding Source={StaticResource viewModelLocator}, Path=CustomerAdminViewModel}">
 
     <Window.Resources>
         <converters:MultiBindingConverter x:Key="multiBindingConverter" />

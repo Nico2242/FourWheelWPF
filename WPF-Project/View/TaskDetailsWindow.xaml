@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:WPF_Project.View"
         xmlns:converters="clr-namespace:WPF_Project.Converters"
         mc:Ignorable="d"
-        Title="TaskDetailsWindow" Height="450" Width="800"
+        Title="FourWheel - Task Details" Height="450" Width="800"
         DataContext="{Binding Source={StaticResource viewModelLocator}, Path=TaskDetailsViewModel}">
-    
+
     <Window.Resources>
         <converters:NullToFalseConverter x:Key="nullToFalseConverter" />
-        
+
         <Style TargetType="{x:Type Label}">
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="FontSize" Value="16" />
         </Style>
     </Window.Resources>
-    
+
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -38,7 +38,12 @@
         <Label Grid.Column="0" Grid.Row="1" Margin="5">Car:</Label>
         <Label Grid.Column="0" Grid.Row="2" Margin="5">Description:</Label>
         <Label Grid.Column="0" Grid.Row="3" Margin="5">Spare Parts:</Label>
-        <Button Grid.Column="0" Grid.Row="4" VerticalAlignment="Top">Add Sparepart</Button>
+        <StackPanel Grid.Column="0" Grid.Row="4">
+            <Button Grid.Column="0" Grid.Row="4" Margin="5" VerticalAlignment="Top" Command="{Binding AddSparepartCommand}">Add Sparepart</Button>
+            <Button Grid.Column="0" Grid.Row="4" Margin="5" VerticalAlignment="Top" 
+                    Command="{Binding RemoveSparepartCommand}"
+                    CommandParameter="{Binding SelectedItem, ElementName=lvSpareParts}">Remove Sparepart</Button>
+        </StackPanel>
 
         <ComboBox Name="cmbCustomers" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer}" Margin="5">
             <ComboBox.ItemTemplate>
@@ -58,8 +63,11 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedTask.Description, Mode=TwoWay}" Margin="5"/>
-        <ListView Name="lvSpareParts" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" ItemsSource="{Binding SelectedTask.Spareparts, Mode=TwoWay}" Margin="5">
+        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedTask.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+        <ListView Name="lvSpareParts" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" 
+                  ItemsSource="{Binding SelectedTask.Spareparts, Mode=TwoWay}" 
+                  Margin="5"
+                  SelectionMode="Single">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />

@@ -58,15 +58,20 @@
     <Compile Include="Converters\NullToFalseConverter.cs" />
     <Compile Include="Converters\TaskStartEndConverter.cs" />
     <Compile Include="Messages\UpdateListMessage.cs" />
+    <Compile Include="Messages\UpdateTaskDetailsMessage.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\FourWheelDataService.cs" />
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\IFourWheelDataService.cs" />
     <Compile Include="Utillity\Messenger.cs" />
+    <Compile Include="ViewModel\SparepartsViewModel.cs" />
     <Compile Include="ViewModel\TaskAdminViewModel.cs" />
     <Compile Include="ViewModel\TaskDetailsViewModel.cs" />
     <Compile Include="View\MenuWindow.xaml.cs">
       <DependentUpon>MenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SparepartsWindow.xaml.cs">
+      <DependentUpon>SparepartsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TaskAdminWindow.xaml.cs">
       <DependentUpon>TaskAdminWindow.xaml</DependentUpon>
@@ -91,6 +96,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\MenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SparepartsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

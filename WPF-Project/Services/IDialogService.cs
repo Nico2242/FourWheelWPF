@@ -4,5 +4,7 @@
     {
         void ShowTaskDetailsDialog();
         void CloseTaskDetailsDialog();
+        void ShowSparepartsWindow();
+        void CloseSparepartsWindows();
     }
 }

@@ -17,5 +17,6 @@ namespace WPF_Project
         public static CustomerAdminViewModel CustomerAdminViewModel { get; } = new CustomerAdminViewModel(dataService, dialogService);
         public static TaskAdminViewModel TaskAdminViewModel { get; } = new TaskAdminViewModel(dataService, dialogService);
         public static TaskDetailsViewModel TaskDetailsViewModel { get; } = new TaskDetailsViewModel(dataService, dialogService);
+        public static SparepartsViewModel SparepartsViewModel { get; } = new SparepartsViewModel(dataService, dialogService);
     }
 }

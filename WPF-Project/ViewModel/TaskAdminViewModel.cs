@@ -73,7 +73,7 @@ namespace WPF_Project.ViewModel
             Task task = new Task();
 
             // Send Task object out so TaskDetailsWindow can receive it 
-            Messenger.Default.Send<Task>(task);
+            Messenger.Default.Send<UpdateTaskDetailsMessage>(new UpdateTaskDetailsMessage(task));
 
             _DialogService.ShowTaskDetailsDialog();
         }
@@ -83,7 +83,7 @@ namespace WPF_Project.ViewModel
             Task task = (Task)obj;
 
             // Send Task object out so TaskDetailsWindow can receive it 
-            Messenger.Default.Send<Task>(task);
+            Messenger.Default.Send<UpdateTaskDetailsMessage>(new UpdateTaskDetailsMessage(task));
 
             _DialogService.ShowTaskDetailsDialog();
         }

@@ -25,6 +25,10 @@ namespace WPF_Project.Services
         {
             return repo.GetTasks();
         }
+        public List<Sparepart> GetAllSpareparts()
+        {
+            return repo.GetSpareparts();
+        }
 
         public void UpdateTask(Task task, bool endTask = false)
         {
@@ -45,5 +49,6 @@ namespace WPF_Project.Services
         {
             repo.AddCar(car);
         }
+
     }
 }

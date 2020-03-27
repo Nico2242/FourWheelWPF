@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Project.View"
         mc:Ignorable="d"
-        Title="MenuWindow" Height="450" Width="200" ResizeMode="NoResize">
+        Title="FourWheel - Menu" Height="450" Width="200" ResizeMode="NoResize">
     <Grid>
         <StackPanel Margin="10" VerticalAlignment="Center">
             <Button Content="Customer Administration" Margin="10" Height="50" Click="CustomerAdmin_Click"/>

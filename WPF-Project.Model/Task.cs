@@ -14,7 +14,7 @@ namespace WPF_Project.Model
         public int Id { get; set; }
 
         string start;
-        public string Start 
+        public string Start
         {
             get => start;
             set
@@ -28,11 +28,11 @@ namespace WPF_Project.Model
                     }
                     OnPropertyChanged();
                 }
-            } 
+            }
         }
 
         string end;
-        public string End 
+        public string End
         {
             get => end;
             set
@@ -42,12 +42,22 @@ namespace WPF_Project.Model
                     end = value;
                     OnPropertyChanged();
                 }
-            } 
+            }
         }
-        public string Description { get; set; }
+
+        string description;
+        public string Description
+        {
+            get => description;
+            set
+            {
+                description = value;
+                OnPropertyChanged();
+            }
+        }
 
         bool status;
-        public bool Status 
+        public bool Status
         {
             get => status;
             set

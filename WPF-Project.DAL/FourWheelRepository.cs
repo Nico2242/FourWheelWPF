@@ -11,6 +11,7 @@ namespace WPF_Project.DAL
     {
         static List<Customer> customers;
         static List<Task> tasks;
+        static List<Sparepart> spareparts;
 
         public List<Task> GetTasks()
         {
@@ -24,6 +25,64 @@ namespace WPF_Project.DAL
             if (customers == null)
                 LoadCustomers();
             return customers;
+        }
+
+        public List<Sparepart> GetSpareparts()
+        {
+            if (spareparts == null)
+                LoadSpareParts();
+            return spareparts;
+        }
+
+
+        public void DeleteTask(Task task)
+        {
+            tasks.Remove(task);
+        }
+
+        public void UpdateTask(Task task, bool endTask = false)
+        {
+            Task tasktoUpdate = tasks.Where(t => t.Id == task.Id).FirstOrDefault();
+
+            if (tasktoUpdate != null)
+            {
+                if (endTask)
+                {
+                    task.End = DateTime.Now.ToString("dd/MM/yy HH:mm");
+                }
+                tasktoUpdate = task;
+            }
+            else
+            {
+                tasks.Add(task);
+            }
+        }
+
+        public void AddCustomer(Customer customer)
+        {
+            customers.Add(customer);
+        }
+
+        public void AddCar(Car car)
+        {
+            Customer customerToGetNewCar = customers.Where(c => c.Id == car.Customer.Id).FirstOrDefault();
+
+            customerToGetNewCar.Cars.Add(car);
+        }
+
+
+
+        #region LOAD DATA
+        private void LoadSpareParts()
+        {
+            spareparts = new List<Sparepart>
+            {
+                new Sparepart { Id = 1, Name = "Olie Filter", Price = 199.95 },
+                new Sparepart { Id = 2, Name = "Pollen Filter", Price = 20d },
+                new Sparepart { Id = 3, Name = "Luft Filter", Price = 333.33 },
+                new Sparepart { Id = 4, Name = "Brændstof Filter", Price = 500d },
+                new Sparepart { Id = 5, Name = "Bundprop", Price = 15.75 }
+            };
         }
 
         private void LoadTasks()
@@ -115,40 +174,6 @@ namespace WPF_Project.DAL
                 }
             }
         }
-
-        public void DeleteTask(Task task)
-        {
-            tasks.Remove(task);
-        }
-
-        public void UpdateTask(Task task, bool endTask = false)
-        {
-            Task tasktoUpdate = tasks.Where(t => t.Id == task.Id).FirstOrDefault();
-
-            if (tasktoUpdate != null)
-            {
-                if (endTask)
-                {
-                    task.End = DateTime.Now.ToString("dd/MM/yy HH:mm");
-                }
-                tasktoUpdate = task;
-            }
-            else
-            {
-                tasks.Add(task);
-            }
-        }
-
-        public void AddCustomer(Customer customer)
-        {
-            customers.Add(customer);
-        }
-
-        public void AddCar(Car car)
-        {
-            Customer customerToGetNewCar = customers.Where(c => c.Id == car.Customer.Id).FirstOrDefault();
-
-            customerToGetNewCar.Cars.Add(car);
-        }
+        #endregion
     }
 }

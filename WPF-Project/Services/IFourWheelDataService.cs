@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using WPF_Project.Model;
 
 namespace WPF_Project.Services
@@ -7,6 +8,7 @@ namespace WPF_Project.Services
     {
         List<Customer> GetAllCustomers();
         List<Task> GetAllTasks();
+        List<Sparepart> GetAllSpareparts();
         void UpdateTask(Task task, bool endTask = false);
         void DeleteTask(Task selectedTask);
         void AddCustomer(Customer Customer);

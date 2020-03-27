@@ -24,24 +24,34 @@ namespace WPF_Project.ViewModel
             _DataService = dataService;
             _DialogService = dialogService;
 
-            // Receive Task Object send from TaskAdminWindow
-            Messenger.Default.Register<Task>(this, OnTaskReceived);
+            // Receive UpdateTaskDetailsMessage send from TaskAdminWindow or spareparts catalog
+            Messenger.Default.Register<UpdateTaskDetailsMessage>(this, OnTaskDetailsReceived);
 
-            //LoadData();
             LoadCommands();
         }
+
 
         private void LoadData()
         {
             Customers = _DataService.GetAllCustomers().ToObservableCollection();
         }
-        private void OnTaskReceived(Task task)
+
+        private void OnTaskDetailsReceived(UpdateTaskDetailsMessage taskDetails)
         {
             LoadData();
-            SelectedTask = task;
-            if (task.Car != null)
+            SelectedTask = taskDetails.Task;
+            if (taskDetails.Task.Car != null)
             {
-                selectedCustomer = task.Car.Customer;
+                selectedCustomer = taskDetails.Task.Car.Customer;
+            }
+
+            _DialogService.CloseSparepartsWindows();
+        }
+        private void OnSparepartsReceived(List<Sparepart> spareparts)
+        {
+            foreach (Sparepart sparepart in spareparts)
+            {
+                SelectedTask.Spareparts.Add(sparepart);
             }
         }
 
@@ -83,11 +93,15 @@ namespace WPF_Project.ViewModel
         #region COMMANDS
         public ICommand SaveTaskCommand { get; set; }
         public ICommand DeleteTaskCommand { get; set; }
+        public ICommand AddSparepartCommand { get; set; }
+        public ICommand RemoveSparepartCommand { get; set; }
 
         private void LoadCommands()
         {
             SaveTaskCommand = new CustomCommand(SaveTask, CanSaveTask);
             DeleteTaskCommand = new CustomCommand(DeleteTask, CanDeleteTask);
+            AddSparepartCommand = new CustomCommand(AddSparepart, CanAddSparepart);
+            RemoveSparepartCommand = new CustomCommand(RemoveSparepart, CanRemoveSparepart);
         }
 
         private void SaveTask(object task)
@@ -104,14 +118,50 @@ namespace WPF_Project.ViewModel
             Messenger.Default.Send<UpdateListMessage>(new UpdateListMessage("Task Deleted!"));
         }
 
+        private void AddSparepart(object obj)
+        {
+            _DialogService.ShowSparepartsWindow();
+
+
+            Messenger.Default.Send<Task>(SelectedTask);
+        }
+
+        private void RemoveSparepart(object obj)
+        {
+            Sparepart selectedSparePart = (Sparepart)obj;
+
+            SelectedTask.Spareparts.Remove(selectedSparePart);
+        }
+
         private bool CanSaveTask(object obj)
         {
-            return true;
+            if (SelectedTask != null)
+            {
+                if (SelectedTask.Car != null && !string.IsNullOrEmpty(SelectedTask.Description))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private bool CanDeleteTask(object obj)
         {
             return true;
+        }
+
+        private bool CanAddSparepart(object obj)
+        {
+            return true;
+        }
+
+        private bool CanRemoveSparepart(object obj)
+        {
+            if (obj != null)
+            {
+                return true;
+            }
+            return false;
         }
         #endregion
 

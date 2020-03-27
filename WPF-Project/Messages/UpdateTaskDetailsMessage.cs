@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WPF_Project.Model;
+﻿using WPF_Project.Model;
 
 namespace WPF_Project.Messages
 {

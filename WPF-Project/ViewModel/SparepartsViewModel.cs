@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Windows;
 using System.Windows.Input;
 using WPF_Project.Extensions;
 using WPF_Project.Messages;
@@ -81,7 +78,7 @@ namespace WPF_Project.ViewModel
             }
 
             IList objList = (IList)obj;
-            
+
             List<Sparepart> spareparts = objList.Cast<Sparepart>().ToList();
 
 
@@ -90,7 +87,7 @@ namespace WPF_Project.ViewModel
                 TaskToUpdate.Spareparts.Add(sparepart);
             }
 
-            
+
             Messenger.Default.Send<UpdateTaskDetailsMessage>(new UpdateTaskDetailsMessage(TaskToUpdate));
 
         }
@@ -104,8 +101,7 @@ namespace WPF_Project.ViewModel
             return false;
         }
         #endregion
-
-
+        
         #region PROPERTY CHANGED EVENT
         public event PropertyChangedEventHandler PropertyChanged;
 

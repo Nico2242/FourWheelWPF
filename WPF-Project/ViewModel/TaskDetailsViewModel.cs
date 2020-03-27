@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows.Input;
 using WPF_Project.Extensions;
 using WPF_Project.Messages;
@@ -46,13 +43,6 @@ namespace WPF_Project.ViewModel
             }
 
             _DialogService.CloseSparepartsWindows();
-        }
-        private void OnSparepartsReceived(List<Sparepart> spareparts)
-        {
-            foreach (Sparepart sparepart in spareparts)
-            {
-                SelectedTask.Spareparts.Add(sparepart);
-            }
         }
 
         #region PROPERTIES

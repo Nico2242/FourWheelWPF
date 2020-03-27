@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WPF_Project.Model
+﻿namespace WPF_Project.Model
 {
     public class TaskSparepart
     {

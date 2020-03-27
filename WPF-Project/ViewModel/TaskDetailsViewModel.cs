@@ -44,6 +44,7 @@ namespace WPF_Project.ViewModel
             }
         }
 
+        #region PROPERTIES
         ObservableCollection<Customer> customers;
         public ObservableCollection<Customer> Customers
         {
@@ -76,6 +77,7 @@ namespace WPF_Project.ViewModel
                 OnPropertyChanged();
             }
         }
+        #endregion
 
         #region COMMANDS
         public ICommand SaveTaskCommand { get; set; }

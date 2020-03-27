@@ -9,5 +9,7 @@ namespace WPF_Project.DAL
         List<Task> GetTasks();
         void UpdateTask(Task task);
         void DeleteTask(Task task);
+        void AddCustomer(Customer customer);
+        void AddCar(Car car);
     }
 }

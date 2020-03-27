@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -25,7 +26,6 @@ namespace WPF_Project.ViewModel
             customerCollection = new CollectionViewSource();
             customerCollection.Source = customers;
             customerCollection.Filter += customerCollection_Filter;
-
         }
 
 
@@ -33,37 +33,6 @@ namespace WPF_Project.ViewModel
         private void LoadData()
         {
             Customers = _DataService.GetAllCustomers().ToObservableCollection();
-        }
-
-        ObservableCollection<Customer> customers;
-        public ObservableCollection<Customer> Customers
-        {
-            get => customers;
-            set
-            {
-                customers = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ICollectionView CustomerCollectionView 
-        { 
-            get
-            {
-                return this.customerCollection.View;
-            }
-        }
-
-        string filterText;
-        public string FilterText 
-        { 
-            get => filterText;
-            set
-            {
-                filterText = value;
-                this.customerCollection.View.Refresh();
-                OnPropertyChanged();
-            }
         }
 
         private void customerCollection_Filter(object sender, FilterEventArgs e)
@@ -85,12 +54,36 @@ namespace WPF_Project.ViewModel
             }
         }
 
-        #region PROPERTY CHANGED EVENT
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        #region PROPERTIES
+        ObservableCollection<Customer> customers;
+        public ObservableCollection<Customer> Customers
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            get => customers;
+            set
+            {
+                customers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICollectionView CustomerCollectionView
+        {
+            get
+            {
+                return this.customerCollection.View;
+            }
+        }
+
+        string filterText;
+        public string FilterText
+        {
+            get => filterText;
+            set
+            {
+                filterText = value;
+                this.customerCollection.View.Refresh();
+                OnPropertyChanged();
+            }
         }
         #endregion
 
@@ -106,8 +99,21 @@ namespace WPF_Project.ViewModel
 
         private void AddCustomer(object obj)
         {
+
             var values = (object[])obj;
-            Customers.Add(new Customer { Id = Customers.Count + 1, Name = values[0].ToString(), Surname = values[1].ToString(), Mail = values[2].ToString() });
+
+            Customer newCustomer = new Customer
+            {
+                Id = Customers.Count + 1,
+                Name = values[0].ToString(),
+                Surname = values[1].ToString(),
+                Mail = values[2].ToString(),
+                Cars = new ObservableCollection<Car>()
+            };
+
+            _DataService.AddCustomer(newCustomer);
+
+            Customers.Add(newCustomer);
         }
 
         private void AddCar(object obj)
@@ -115,24 +121,37 @@ namespace WPF_Project.ViewModel
             var values = (object[])obj;
 
             int highestCarId = 0;
-            
-            Customer customer = (Customer)values[0];
 
+            Customer selectedCustomer = (Customer)values[0];
+
+
+            // Get Highest car id
             foreach (Customer cust in Customers)
             {
-                foreach (Car car in cust.Cars)
+                if (cust.Cars != null)
                 {
-                    int carId = car.Id;
-
-                    if (carId > highestCarId)
+                    foreach (Car car in cust.Cars)
                     {
-                        highestCarId = carId;
+                        int carId = car.Id;
+
+                        if (carId > highestCarId)
+                        {
+                            highestCarId = carId;
+                        }
                     }
                 }
             }
 
-            customer.Cars.Add(new Car { Id = highestCarId++, Brand = (CarBrand)values[1], Model = values[2].ToString(), Plate = values[3].ToString() });
+            Car newCar = new Car
+            {
+                Id = highestCarId++,
+                Brand = (CarBrand)values[1],
+                Model = values[2].ToString(),
+                Plate = values[3].ToString(),
+                Customer = selectedCustomer
+            };
 
+            _DataService.AddCar(newCar);
         }
 
         private bool CanAddCustomer(object obj)
@@ -165,6 +184,15 @@ namespace WPF_Project.ViewModel
                 return false;
             }
             return false;
+        }
+        #endregion
+
+        #region PROPERTY CHANGED EVENT
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
         #endregion
     }

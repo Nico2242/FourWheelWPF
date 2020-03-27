@@ -9,5 +9,7 @@ namespace WPF_Project.Services
         List<Task> GetAllTasks();
         void UpdateTask(Task task);
         void DeleteTask(Task selectedTask);
+        void AddCustomer(Customer Customer);
+        void AddCar(Car newCar);
     }
 }

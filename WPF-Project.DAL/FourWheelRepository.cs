@@ -134,5 +134,17 @@ namespace WPF_Project.DAL
                 tasks.Add(task);
             }
         }
+
+        public void AddCustomer(Customer customer)
+        {
+            customers.Add(customer);
+        }
+
+        public void AddCar(Car car)
+        {
+            Customer customerToGetNewCar = customers.Where(c => c.Id == car.Customer.Id).FirstOrDefault();
+
+            customerToGetNewCar.Cars.Add(car);
+        }
     }
 }

@@ -35,5 +35,15 @@ namespace WPF_Project.Services
         {
             repo.DeleteTask(task);
         }
+
+        public void AddCustomer(Customer customer)
+        {
+            repo.AddCustomer(customer);
+        }
+
+        public void AddCar(Car car)
+        {
+            repo.AddCar(car);
+        }
     }
 }

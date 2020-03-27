@@ -43,6 +43,7 @@ namespace WPF_Project.ViewModel
             Tasks = _DataService.GetAllTasks().ToObservableCollection();
         }
 
+        #region PROPERTIES
         ObservableCollection<Task> tasks;
         public ObservableCollection<Task> Tasks 
         {
@@ -53,16 +54,18 @@ namespace WPF_Project.ViewModel
                 OnPropertyChanged();
             } 
         }
+        #endregion
 
         #region COMMANDS
+        public ICommand AddTaskCommand { get; set; }
+        public ICommand EditTaskCommand { get; set; }
+
         private void LoadCommands()
         {
             EditTaskCommand = new CustomCommand(EditTask, CanEditTask);
             AddTaskCommand = new CustomCommand(AddTask, CanAddTask);
         }
 
-
-        public ICommand AddTaskCommand { get; set; }
         private void AddTask(object obj)
         {
             Task task = new Task();
@@ -73,12 +76,6 @@ namespace WPF_Project.ViewModel
             _DialogService.ShowTaskDetailsDialog();
         }
 
-        private bool CanAddTask(object obj)
-        {
-            return true;
-        }
-
-        public ICommand EditTaskCommand { get; set; }
         private void EditTask(object obj)
         {
             Task task = (Task)obj;
@@ -87,6 +84,11 @@ namespace WPF_Project.ViewModel
             Messenger.Default.Send<Task>(task);
 
             _DialogService.ShowTaskDetailsDialog();
+        }
+
+        private bool CanAddTask(object obj)
+        {
+            return true;
         }
 
         private bool CanEditTask(object obj)

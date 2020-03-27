@@ -27,7 +27,7 @@ namespace WPF_Project.ViewModel
             // Receive Task Object send from TaskAdminWindow
             Messenger.Default.Register<Task>(this, OnTaskReceived);
 
-            LoadData();
+            //LoadData();
             LoadCommands();
         }
 
@@ -37,6 +37,7 @@ namespace WPF_Project.ViewModel
         }
         private void OnTaskReceived(Task task)
         {
+            LoadData();
             SelectedTask = task;
             if (task.Car != null)
             {

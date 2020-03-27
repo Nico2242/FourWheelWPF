@@ -121,12 +121,16 @@ namespace WPF_Project.DAL
             tasks.Remove(task);
         }
 
-        public void UpdateTask(Task task)
+        public void UpdateTask(Task task, bool endTask = false)
         {
             Task tasktoUpdate = tasks.Where(t => t.Id == task.Id).FirstOrDefault();
 
             if (tasktoUpdate != null)
             {
+                if (endTask)
+                {
+                    task.End = DateTime.Now.ToString("dd/MM/yy HH:mm");
+                }
                 tasktoUpdate = task;
             }
             else

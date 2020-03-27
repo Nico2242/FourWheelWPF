@@ -7,7 +7,7 @@ namespace WPF_Project.DAL
     {
         List<Customer> GetCustomers();
         List<Task> GetTasks();
-        void UpdateTask(Task task);
+        void UpdateTask(Task task, bool endTask = false);
         void DeleteTask(Task task);
         void AddCustomer(Customer customer);
         void AddCar(Car car);

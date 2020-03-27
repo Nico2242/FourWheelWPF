@@ -7,7 +7,7 @@ namespace WPF_Project.Services
     {
         List<Customer> GetAllCustomers();
         List<Task> GetAllTasks();
-        void UpdateTask(Task task);
+        void UpdateTask(Task task, bool endTask = false);
         void DeleteTask(Task selectedTask);
         void AddCustomer(Customer Customer);
         void AddCar(Car newCar);

@@ -21,6 +21,7 @@
         <StackPanel Grid.Column="0" Margin="10">
             <Button Content="Add Task" Margin="0,0,0,10" Command="{Binding AddTaskCommand}"/>
             <Button Content="Edit Task" Margin="0,0,0,10" Command="{Binding EditTaskCommand}" CommandParameter="{Binding SelectedItem, ElementName=lvTasks}"/>
+            <Button Content="End Task" Margin="0,0,0,10" Command="{Binding EndTaskCommand}" CommandParameter="{Binding SelectedItem, ElementName=lvTasks}"/>
         </StackPanel>
         <ListView Margin="10" Name="lvTasks" Grid.Column="1" ItemsSource="{Binding Tasks}" SelectionMode="Single">
             <ListView.ItemContainerStyle>

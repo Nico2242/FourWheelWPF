@@ -26,9 +26,9 @@ namespace WPF_Project.Services
             return repo.GetTasks();
         }
 
-        public void UpdateTask(Task task)
+        public void UpdateTask(Task task, bool endTask = false)
         {
-            repo.UpdateTask(task);
+            repo.UpdateTask(task, endTask);
         }
 
         public void DeleteTask(Task task)

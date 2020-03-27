@@ -45,25 +45,27 @@ namespace WPF_Project.ViewModel
 
         #region PROPERTIES
         ObservableCollection<Task> tasks;
-        public ObservableCollection<Task> Tasks 
+        public ObservableCollection<Task> Tasks
         {
             get => tasks;
             set
             {
                 tasks = value;
                 OnPropertyChanged();
-            } 
+            }
         }
         #endregion
 
         #region COMMANDS
         public ICommand AddTaskCommand { get; set; }
         public ICommand EditTaskCommand { get; set; }
+        public ICommand EndTaskCommand { get; set; }
 
         private void LoadCommands()
         {
             EditTaskCommand = new CustomCommand(EditTask, CanEditTask);
             AddTaskCommand = new CustomCommand(AddTask, CanAddTask);
+            EndTaskCommand = new CustomCommand(EndTask, CanEndTask);
         }
 
         private void AddTask(object obj)
@@ -86,6 +88,13 @@ namespace WPF_Project.ViewModel
             _DialogService.ShowTaskDetailsDialog();
         }
 
+        private void EndTask(object obj)
+        {
+            Task task = (Task)obj;
+
+            _DataService.UpdateTask(task, true);
+        }
+
         private bool CanAddTask(object obj)
         {
             return true;
@@ -98,9 +107,30 @@ namespace WPF_Project.ViewModel
                 Task task = (Task)obj;
                 if (task != null)
                 {
-                    return true;
+                    if (task.End == "Ongoing" || task.End == null)
+                    {
+                        return true;
+                    }
                 }
 
+                return false;
+            }
+
+            return false;
+        }
+
+        private bool CanEndTask(object obj)
+        {
+            if (obj != null)
+            {
+                Task task = (Task)obj;
+                if (task != null)
+                {
+                    if (task.Start != null && task.End == "Ongoing")
+                    {
+                        return true;
+                    }
+                }
                 return false;
             }
 
